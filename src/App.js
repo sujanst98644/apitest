@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import React from "react"
 
-function App() {
+export default function Home() {
+  //usestate for number changes
+const [counter, setcount] = useState (10)
+const increase = () => {
+  setcount(counter+1)
+}
+const decrease = () => {
+  setcount(counter-1)
+}
+
+//usestate for entry update
+const [text, setText] = useState ("how you doin?")
+const textfill = (e) => {
+  setText(e.target.value)
+}
+
+//usestate for toggle action
+const [isvisible, setVisibility]=useState(false)
+
+const visibility =()=>{
+  setVisibility(!isvisible)
+}
+
+// word length usestate
+const [test, settest] = useState("")
+  const Counte=(e)=>{
+    settest(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <button onClick={increase} className="border-2 rounded-full w-20">increase</button>
+      <div id="counter">{counter}</div>
+      <button onClick={decrease} className="border-2 rounded-full w-20">decrease</button><br/>
+
+
+      <input type="text" value={text} onChange={textfill}/>
+      <p>{text}</p>
+
+      <button onClick={visibility}>show/hide</button>
+      {isvisible&&<p>toggle!</p>}
+
+      <textarea name="event" id="text" onChange={Counte}/>
+      <p>{test.length}</p>
+
+    </main>
   );
 }
 
-export default App;
