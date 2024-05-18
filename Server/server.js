@@ -1,8 +1,13 @@
-var express = require('express');
-var app = express();
+require("dotenv").config()
+const express = require('express');
+const app = express();
 
-app.get("/api", (req, res)=> {
+app.get("/", (req, res)=> {
     res.json({"users": ["sujan", "thapa",]})
 })
 
-app.listen(5000, ()=>{console.log("api is working.")})
+app.get("/signup",(req, res)=>{
+    res.send("hello world")
+})
+
+app.listen(process.env.PORT, ()=>{console.log("api is working.")})

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import React from "react"
 
 export default function Home() {
@@ -29,6 +29,17 @@ const [test, settest] = useState("")
   const Counte=(e)=>{
     settest(e.target.value)
   }
+  //backend api
+  const [backend, setBackend] = useState([{}])
+  useEffect(()=>{
+    fetch('/').then(
+      response =>response.json()
+    ).then(
+      data=> {
+        setBackend(data)
+      }
+    )
+  },[])
 
   return (
     <main>
