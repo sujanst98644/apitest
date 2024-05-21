@@ -1,13 +1,27 @@
-require("dotenv").config()
-const express = require('express');
-const app = express();
+import dotenv from "dotenv"
+import connectDB from "./db/index.js";
 
-app.get("/", (req, res)=> {
-    res.json({"users": ["sujan", "thapa",]})
+dotenv.config({
+    path: "./env"
 })
 
-app.get("/signup",(req, res)=>{
-    res.send("hello world")
-})
+connectDB()
+// import express from "express"
+//  const app = express()
 
-app.listen(process.env.PORT, ()=>{console.log("api is working.")})
+// ;( async ()=>{
+//     try {
+//         mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
+//         app.on("error", ()=>{
+//             console.log("Error: ")
+//             throw error
+//         })
+
+//         app.listen(process.env.PORT,()=>{
+//             console.log(`App is listening on port ${process.env.PORT}`)
+//         })
+//     } catch (error) {
+//         console.error("Error: ")
+//         throw err
+//     }
+// })()
